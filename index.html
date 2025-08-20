@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ramin Study Planner</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Animation Screen -->
+  <div id="splash-screen">
+    <h1 class="splash-text">Ramin</h1>
+  </div>
+
+  <!-- Main App -->
+  <div id="app" style="display: none;">
+    <header>
+      <h1>📚 Ramin Study Planner</h1>
+    </header>
+
+    <main>
+      <section id="calendar">
+        <h2>Calendar View</h2>
+        <div id="calendar-container"></div>
+      </section>
+
+      <section id="syllabus">
+        <h2>SSC 2026 NCTB Syllabus</h2>
+        <p>Subjects and chapters will be shown here…</p>
+      </section>
+
+      <section id="progress">
+        <h2>Progress Tracking</h2>
+        <button onclick="exportPDF()">📄 Export Progress as PDF</button>
+      </section>
+
+      <section id="notifications">
+        <h2>Notifications & Reminders</h2>
+        <button onclick="setReminder()">🔔 Set Daily Reminder</button>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
