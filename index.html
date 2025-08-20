@@ -21,22 +21,34 @@
     <main>
       <section id="calendar">
         <h2>Calendar View</h2>
-        <div id="calendar-container"></div>
+        <div id="calendar-container">
+          <p>🗓 Calendar feature coming soon...</p>
+        </div>
       </section>
 
       <section id="syllabus">
         <h2>SSC 2026 NCTB Syllabus</h2>
-        <p>Subjects and chapters will be shown here…</p>
+        <ul>
+          <li>Bangla – 20 Chapters</li>
+          <li>English – 18 Chapters</li>
+          <li>Math – 25 Chapters</li>
+          <li>Science – 22 Chapters</li>
+          <li>ICT – 10 Chapters</li>
+          <li>Religion – 14 Chapters</li>
+          <li>Social Science – 15 Chapters</li>
+        </ul>
+        <button id="generate-plan-btn">⚡ Generate Auto Study Plan</button>
       </section>
 
       <section id="progress">
         <h2>Progress Tracking</h2>
-        <button onclick="exportPDF()">📄 Export Progress as PDF</button>
+        <button id="export-btn">📄 Export Progress as PDF</button>
+        <button id="share-btn">🤝 Share with Friends</button>
       </section>
 
       <section id="notifications">
         <h2>Notifications & Reminders</h2>
-        <button onclick="setReminder()">🔔 Set Daily Reminder</button>
+        <button id="notify-btn">🔔 Enable Daily Reminder</button>
       </section>
     </main>
   </div>
