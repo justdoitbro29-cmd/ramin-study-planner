@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ramin Study Planner</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Animation Screen -->
+  <!-- Splash Screen -->
   <div id="splash-screen">
     <h1 class="splash-text">Ramin</h1>
   </div>
@@ -15,40 +15,19 @@
   <!-- Main App -->
   <div id="app" style="display: none;">
     <header>
-      <h1>📚 Ramin Study Planner</h1>
+      <h1>📘 Ramin's Study Planner</h1>
     </header>
 
     <main>
-      <section id="calendar">
-        <h2>Calendar View</h2>
-        <div id="calendar-container">
-          <p>🗓 Calendar feature coming soon...</p>
-        </div>
+      <section>
+        <h2>SSC 2026 Syllabus</h2>
+        <p>এখানে তুমি NCTB syllabus অনুযায়ী পড়াশোনা plan করতে পারবে।</p>
       </section>
 
-      <section id="syllabus">
-        <h2>SSC 2026 NCTB Syllabus</h2>
-        <ul>
-          <li>Bangla – 20 Chapters</li>
-          <li>English – 18 Chapters</li>
-          <li>Math – 25 Chapters</li>
-          <li>Science – 22 Chapters</li>
-          <li>ICT – 10 Chapters</li>
-          <li>Religion – 14 Chapters</li>
-          <li>Social Science – 15 Chapters</li>
-        </ul>
-        <button id="generate-plan-btn">⚡ Generate Auto Study Plan</button>
-      </section>
-
-      <section id="progress">
-        <h2>Progress Tracking</h2>
-        <button id="export-btn">📄 Export Progress as PDF</button>
-        <button id="share-btn">🤝 Share with Friends</button>
-      </section>
-
-      <section id="notifications">
-        <h2>Notifications & Reminders</h2>
-        <button id="notify-btn">🔔 Enable Daily Reminder</button>
+      <section>
+        <h2>Auto Study Plan</h2>
+        <button onclick="generatePlan()">Generate Plan</button>
+        <div id="plan-output"></div>
       </section>
     </main>
   </div>
