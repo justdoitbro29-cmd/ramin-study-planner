@@ -2,6 +2,7 @@
 window.addEventListener("load", () => {
   setTimeout(() => {
     document.getElementById("splash-screen").style.display = "none";
+    document.getElementById("app").style.display = "block"; // 🔥 Add this line
   }, 3000); // 3 sec splash
 });
 
