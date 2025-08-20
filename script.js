@@ -1,84 +1,47 @@
-// Wait until splash screen finishes
+// Splash screen hide after 3 sec
 window.addEventListener("load", () => {
   setTimeout(() => {
     document.getElementById("splash-screen").style.display = "none";
-    document.getElementById("app").style.display = "block"; // 🔥 Add this line
-  }, 3000); // 3 sec splash
+    document.getElementById("app").style.display = "block"; // show main app
+  }, 3000);
 });
 
-// Auto Study Planner Algorithm (Simple Example)
+// Example SSC 2026 syllabus (dummy data)
+const syllabus = {
+  Bangla: 20,
+  English: 18,
+  Math: 25,
+  Physics: 15,
+  Chemistry: 14,
+  Biology: 16,
+  ICT: 10,
+};
+
+// Auto Study Plan Generator
 function generatePlan() {
-  const syllabus = [
-    "Bangla - 20 Chapters",
-    "English - 18 Chapters",
-    "Math - 25 Chapters",
-    "Science - 22 Chapters",
-    "ICT - 10 Chapters",
-    "Religion - 14 Chapters",
-    "Social Science - 15 Chapters"
-  ];
+  const totalDays = 200; // ধরে নিচ্ছি ২০০ দিনে শেষ করতে হবে (তুমি চাইলে dynamic input নিতে পারো)
+  let output = "<h3>📅 তোমার Auto Study Plan (SSC 2026)</h3><ul>";
 
-  let days = parseInt(prompt("Enter how many days you have until SSC 2026 exam:"));
-  let dailyPlan = [];
+  for (let subject in syllabus) {
+    const chapters = syllabus[subject];
+    const daysPerSubject = Math.floor(totalDays / Object.keys(syllabus).length);
+    const chaptersPerDay = (chapters / daysPerSubject).toFixed(2);
 
-  syllabus.forEach(subject => {
-    let parts = subject.split(" - ");
-    let name = parts[0];
-    let chapters = parseInt(parts[1]);
-    let perDay = Math.ceil(chapters / days);
-
-    dailyPlan.push(`${name}: ~${perDay} chapters per day`);
-  });
-
-  alert("📅 Your Auto Study Plan:\n\n" + dailyPlan.join("\n"));
-}
-
-// Notification Reminder
-function showNotification() {
-  if (Notification.permission === "granted") {
-    new Notification("📚 Reminder: Time to Study!", {
-      body: "Open your planner and complete today's tasks.",
-      icon: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-    });
-  } else if (Notification.permission !== "denied") {
-    Notification.requestPermission().then(permission => {
-      if (permission === "granted") {
-        showNotification();
-      }
-    });
+    output += `<li><b>${subject}</b>: প্রতি দিনে প্রায় ${chaptersPerDay} chapter (মোট ${chapters} অধ্যায়, সময় ${daysPerSubject} দিন)</li>`;
   }
-}
 
-// Export Plan as PDF
-function exportPDF() {
-  const content = document.querySelector("main").innerText;
-  const blob = new Blob([content], { type: "application/pdf" });
-  const url = URL.createObjectURL(blob);
+  output += "</ul>";
 
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "study-plan.pdf";
-  a.click();
-  URL.revokeObjectURL(url);
-}
+  // Calendar-style daily breakdown
+  output += "<h3>📖 Day by Day Plan (Calendar View)</h3>";
+  output += "<div style='display:grid;grid-template-columns:repeat(7,1fr);gap:5px;'>";
 
-// Share with Friends
-function sharePlan() {
-  if (navigator.share) {
-    navigator.share({
-      title: "My Study Plan",
-      text: "Here is my SSC 2026 study plan!",
-      url: window.location.href
-    });
-  } else {
-    alert("Sharing not supported on this device.");
+  let day = 1;
+  for (let i = 0; i < totalDays; i++) {
+    output += `<div style='border:1px solid #555;padding:5px;border-radius:4px;text-align:center;'>Day ${day}</div>`;
+    day++;
   }
-}
+  output += "</div>";
 
-// Attach buttons
-document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("generate-plan-btn")?.addEventListener("click", generatePlan);
-  document.getElementById("notify-btn")?.addEventListener("click", showNotification);
-  document.getElementById("export-btn")?.addEventListener("click", exportPDF);
-  document.getElementById("share-btn")?.addEventListener("click", sharePlan);
-});
+  document.getElementById("plan-output").innerHTML = output;
+}
